@@ -61,3 +61,13 @@ func (mc *MinioClient)uploadFile(ctx context.Context,bucketName,fileName,fileLoc
 	fmt.Println("file uploaded : ",result.Key)
 	return nil
 }
+
+
+func (mc *MinioClient)downloadFile(ctx context.Context,bucketName,fileName,fileLocation string)error{
+    err:=mc.client.FGetObject(ctx,bucketName,fileName,fileLocation,minio.GetObjectOptions{})
+    if err!=nil{
+        return err
+    }
+    fmt.Printf("%s downloaded in to %s",fileName,fileLocation)
+    return nil
+}
