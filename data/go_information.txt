@@ -1,0 +1,83 @@
+
+Go
+
+Paradigm	Multi-paradigm: concurrent imperative, functional[1] object-oriented[2][3]
+Designed by	Robert Griesemer
+Rob Pike
+Ken Thompson[4]
+Developer	The Go Authors[5]
+First appeared	November 10, 2009; 14 years ago
+Stable release	
+1.23.0 / 13 August 2024; 6 days ago
+Typing discipline	Inferred, static, strong,[6] structural,[7][8] nominal
+Memory management	Garbage collection
+Implementation language	Go, Assembly language (gc); C++ (gofrontend)
+OS	DragonFly BSD, FreeBSD, Linux, macOS, NetBSD, OpenBSD,[9] Plan 9,[10] Solaris, Windows
+License	3-clause BSD[5] + patent grant[11]
+Filename extensions	.go
+Website	go.dev
+Major implementations
+gc, gofrontend
+Influenced by
+C, Oberon-2, Limbo, Active Oberon, communicating sequential processes, Pascal, Oberon, Smalltalk, Newsqueak, Modula-2, Alef, APL, BCPL, Modula, occam
+Influenced
+Crystal, V
+Go is a statically typed, compiled high-level programming language designed at Google[12] by Robert Griesemer, Rob Pike, and Ken Thompson.[4] It is syntactically similar to C, but also has memory safety, garbage collection, structural typing,[7] and CSP-style concurrency.[13] It is often referred to as Golang because of its former domain name, golang.org, but its proper name is Go.[14]
+
+There are two major implementations:
+
+Google's self-hosting[15] "gc" compiler toolchain, targeting multiple operating systems and WebAssembly.[16]
+gofrontend, a frontend to other compilers, with the libgo library. With GCC the combination is gccgo;[17] with LLVM the combination is gollvm.[18][a]
+A third-party source-to-source compiler, GopherJS,[20] compiles Go to JavaScript for front-end web development.
+
+History
+Go was designed at Google in 2007 to improve programming productivity in an era of multicore, networked machines and large codebases.[21] The designers wanted to address criticisms of other languages in use at Google, but keep their useful characteristics:[22]
+
+Static typing and run-time efficiency (like C)
+Readability and usability (like Python)[23]
+High-performance networking and multiprocessing
+Its designers were primarily motivated by their shared dislike of C++.[24][25][26]
+
+Go was publicly announced in November 2009,[27] and version 1.0 was released in March 2012.[28][29] Go is widely used in production at Google[30] and in many other organizations and open-source projects.
+
+Branding and styling
+
+Mascot of Go programming language is a Gopher shown above.
+The Gopher mascot was introduced in 2009 for the open source launch of the language. The design, by Renée French, borrowed from a c. 2000 WFMU promotion.[31]
+
+In November 2016, the Go and Go Mono fonts were released by type designers Charles Bigelow and Kris Holmes specifically for use by the Go project. Go is a humanist sans-serif resembling Lucida Grande, and Go Mono is monospaced. Both fonts adhere to the WGL4 character set and were designed to be legible with a large x-height and distinct letterforms. Both Go and Go Mono adhere to the DIN 1450 standard by having a slashed zero, lowercase l with a tail, and an uppercase I with serifs.[32][33]
+
+In April 2018, the original logo was redesigned by brand designer Adam Smith. The new logo is a modern, stylized GO slanting right with trailing streamlines. (The Gopher mascot remained the same.[34])
+
+Generics
+The lack of support for generic programming in initial versions of Go drew considerable criticism.[35] The designers expressed an openness to generic programming and noted that built-in functions were in fact type-generic, but are treated as special cases; Pike called this a weakness that might be changed at some point.[36] The Google team built at least one compiler for an experimental Go dialect with generics, but did not release it.[37]
+
+In August 2018, the Go principal contributors published draft designs for generic programming and error handling and asked users to submit feedback.[38][39] However, the error handling proposal was eventually abandoned.[40]
+
+In June 2020, a new draft design document[41] was published that would add the necessary syntax to Go for declaring generic functions and types. A code translation tool, go2go, was provided to allow users to try the new syntax, along with a generics-enabled version of the online Go Playground.[42]
+
+Generics were finally added to Go in version 1.18 on March 15, 2022.[43]
+
+Versioning
+Go 1 guarantees compatibility[44] for the language specification and major parts of the standard library. All versions up through the current Go 1.22 release[45] have maintained this promise.
+
+Go does not follow SemVer; rather, each major Go release is supported until there are two newer minor releases. Unlike most software, Go calls the second number in a version the major, i.e., in 1.x x is the major version. [46] This is because Go plans to never reach 2.0, given that compatibility is one of language's major selling points.[47]
+
+Design
+Go is influenced by C (especially the Plan 9 dialect[48][failed verification – see discussion]), but with an emphasis on greater simplicity and safety. It consists of:
+
+A syntax and environment adopting patterns more common in dynamic languages:[49]
+Optional concise variable declaration and initialization through type inference (x := 0 instead of var x int = 0; or var x = 0;)
+Fast compilation[50]
+Remote package management (go get)[51] and online package documentation[52]
+Distinctive approaches to particular problems:
+Built-in concurrency primitives: light-weight processes (goroutines), channels, and the select statement
+An interface system in place of virtual inheritance, and type embedding instead of non-virtual inheritance
+A toolchain that, by default, produces statically linked native binaries without external Go dependencies
+A desire to keep the language specification simple enough to hold in a programmer's head,[53] in part by omitting features that are common in similar languages.
+Syntax
+Go's syntax includes changes from C aimed at keeping code concise and readable. A combined declaration/initialization operator was introduced that allows the programmer to write i := 3 or s := "Hello, world!", without specifying the types of variables used. This contrasts with C's int i = 3; and const char *s = "Hello, world!";.
+
+Semicolons still terminate statements;[b] but are implicit when the end of a line occurs.[c]
+
+Methods may return multiple values, and returning a result, err pair is the conventional way a method indicates an error to its caller in Go.[d] Go adds literal syntaxes for initializing struct parameters by name and for initializing maps and slices. As an alternative to C's three-statement for loop, Go's range expressions allow concise iteration over arrays, slices, strings, maps, and channels.[5
