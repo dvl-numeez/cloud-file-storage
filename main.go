@@ -13,8 +13,9 @@ func main()  {
 	if err!=nil{
 		log.Fatal("Error occured while connecting to minio : ",err)
 	}
-	err=client.downloadFile(context.Background(),"cloud-fs","go-info","./downloads/downloaded_go_information.txt",)
+	err=client.deleteFile(context.Background(),"cloud-fs","go-info")
 	if err!=nil{
-		log.Fatal("Error occured while uploading file")
+		log.Fatal("error occured file deleting a file : ",err)
 	}
+	
 }

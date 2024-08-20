@@ -71,3 +71,12 @@ func (mc *MinioClient)downloadFile(ctx context.Context,bucketName,fileName,fileL
     fmt.Printf("%s downloaded in to %s",fileName,fileLocation)
     return nil
 }
+
+func (mc *MinioClient)deleteFile(ctx context.Context,bucketName,fileName string)error{
+	err:=mc.client.RemoveObject(ctx,bucketName,fileName,minio.RemoveObjectOptions{})
+	if err!=nil{
+		return err
+	}
+	fmt.Printf("%s file deleted successfully",fileName)
+	return nil
+}
