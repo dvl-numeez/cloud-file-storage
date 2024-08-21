@@ -11,12 +11,21 @@ import (
 )
 
 
+
+type Minio interface{
+	createBucket(string,context.Context)error
+	uploadFile(ctx context.Context,bucketName,fileName,fileLocation,contentType string)error
+	downloadFile(ctx context.Context,bucketName,fileName,fileLocation string)error
+	deleteFile(ctx context.Context,bucketName,fileName string)error
+}
+
+
 type MinioClient struct {
 	client *minio.Client
 }
 
 
-func NewMinioClient() (*MinioClient,error){
+func NewMinioClient() (Minio,error){
 	endpoint := "play.min.io"
     accessKeyID := "Q3AM3UQ867SPQQA43P2F"
     secretAccessKey := "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
